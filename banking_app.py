@@ -1,17 +1,4 @@
 import streamlit as st
-from streamlit_lottie import st_lottie
-import json
-
-# ------------------- LOTTIE ANIMATION LOADER -------------------
-def load_lottiefile(url: str):
-    try:
-        import requests
-        r = requests.get(url)
-        if r.status_code == 200:
-            return r.json()
-    except:
-        return None
-
 
 # ------------------- DATA MODELS -------------------
 class Account:
@@ -135,11 +122,6 @@ bank = st.session_state.bank
 
 st.title("🏦 Simple Banking System")
 st.caption("Built using **Streamlit** | Inspired by your Java console project 💻")
-
-# Animation
-animation = load_lottiefile("https://assets7.lottiefiles.com/packages/lf20_jcikwtux.json")
-if animation:
-    st_lottie(animation, height=200, key="intro")
 
 menu = ["Create Account", "Deposit", "Withdraw", "Show All Transactions", "Customer Transactions"]
 choice = st.sidebar.radio("📜 Menu", menu)
